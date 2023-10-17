@@ -14,8 +14,21 @@ global:
   ##   - myRegistryKeySecretName
   ##
   imagePullSecrets: []
+  ## @param commonLabels Common annotations to add to all Keptn resources. Evaluated as a template
+  ##
+  commonLabels: { }
+  ## @param commonAnnotations Common annotations to add to all Keptn resources. Evaluated as a template
+  ##
+  commonAnnotations: { }
 
 kubernetesClusterDomain: cluster.local
+nodeSelector: { }
+replicas: 1
+tolerations: [ ]
+topologySpreadConstraints: [ ]
+annotations: {}
+podAnnotations: {}
+
 config:
   health:
     healthProbeBindAddress: :8081
@@ -64,10 +77,6 @@ resources:
   requests:
     cpu: 10m
     memory: 64Mi
-nodeSelector: { }
-replicas: 1
-tolerations: [ ]
-topologySpreadConstraints: [ ]
 operatorService:
   ports:
     - name: https
